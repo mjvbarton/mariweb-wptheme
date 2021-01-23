@@ -2,11 +2,11 @@
   "name": "mariweb-wptheme",
   "version": "0.1.0",
   "engines": {
-    "npm" : "6.13.4",
-    "node" : "12.14.1"
+    "npm": "6.13.4",
+    "node": "12.14.1"
   },
   "private": true,
-  "main" : "server.js",  
+  "main": "server.js",
   "dependencies": {
     "@craco/craco": "^6.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
@@ -19,7 +19,6 @@
     "@testing-library/user-event": "^12.6.2",
     "@tippyjs/react": "^4.2.0",
     "autoprefixer": "^9.8.6",
-    "popper": "^1.0.1",
     "postcss": "^7.0.35",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -30,11 +29,11 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev" : "craco start",
+    "dev": "craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "heroku-postbuild" : "npm install"
+    "heroku-postbuild": "npm install"
   },
   "eslintConfig": {
     "extends": [
