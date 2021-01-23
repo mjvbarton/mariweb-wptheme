@@ -1,8 +1,7 @@
-import { faFacebook, faInstagram, faPatreon, faPinterest, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faPatreon } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Nav from '../components/navs/Nav';
+import SocialSites from '../components/navs/SocialSites';
 
 /**
  * Represents footer of the page
@@ -22,25 +21,21 @@ class Footer extends React.Component{
                             Become a Patron!
                         </div> 
                     </div>
-                    <hr className="mx-auto max-w-md my-5" />
-                    <Nav title="Sociální sítě" className="mx-auto max-w-md" titleClass="sr-only" ulClass="flex items-center justify-center" liClass="mx-3 text-lg hover:text-white">
-                        <Link to="#">
-                            <FontAwesomeIcon icon={faFacebook} />
-                            <span className="sr-only">Facebook</span>
-                        </Link>
-                        <Link to="#">
-                            <FontAwesomeIcon icon={faInstagram} />
-                            <span className="sr-only">Instagram</span>
-                        </Link>
-                        <Link to="#">
-                            <FontAwesomeIcon icon={faPinterest} />
-                            <span className="sr-only">Pinterest</span>
-                        </Link>
-                        <Link to="#">
-                            <FontAwesomeIcon icon={faYoutube} />
-                            <span className="sr-only">Youtube</span>
-                        </Link>
-                    </Nav>
+                    <hr className="mx-auto max-w-md my-5" />                
+                    <SocialSites
+                        facebook="example" 
+                        instagram="example"
+                        pinterest="example" 
+                        youtube="example" 
+                        soundcloud="example" 
+                        twitter="example" 
+                        github="example" 
+                        email="example@example.com"
+                        className="mx-auto max-w-md"
+                        titleClass="sr-only"
+                        ulClass="flex items-center justify-center"
+                        liClass="mx-3 text-lg hover:text-white"
+                    />
                     <div id="copyright" className="mt-7">
                         <p>
                             &copy; {this.props.copyrightText}

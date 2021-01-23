@@ -1,8 +1,7 @@
 import React from 'react';
 import Nav from '../components/navs/Nav';
 import {Link} from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faInstagram, faPinterest, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import SocialSites from '../components/navs/SocialSites';
 
 class Header extends React.Component{
     render(){
@@ -20,25 +19,21 @@ class Header extends React.Component{
                         <Link to="/rubriky/rubrika-4">Rubrika 4</Link>
                         <Link to="/o-mne">O mně</Link>
                         <Link to="/kontakt">Kontakt</Link>
-                    </Nav>
-                    <Nav title="Sociální sítě" className="flex-none mx-5" titleClass="sr-only" ulClass="flex justify-items-end" liClass="mx-2 uppercase text-gray-700 text-sm hover:text-red-800">
-                        <Link to="#">
-                            <FontAwesomeIcon icon={faFacebook} />
-                            <span className="sr-only">Facebook</span>
-                        </Link>
-                        <Link to="#">
-                            <FontAwesomeIcon icon={faInstagram} />
-                            <span className="sr-only">Instagram</span>
-                        </Link>
-                        <Link to="#">
-                            <FontAwesomeIcon icon={faPinterest} />
-                            <span className="sr-only">Pinterest</span>
-                        </Link>
-                        <Link to="#">
-                            <FontAwesomeIcon icon={faYoutube} />
-                            <span className="sr-only">Youtube</span>
-                        </Link>
-                    </Nav>
+                    </Nav>                    
+                    <SocialSites
+                        facebook="example" 
+                        instagram="example"
+                        pinterest="example" 
+                        youtube="example" 
+                        soundcloud="example" 
+                        twitter="example" 
+                        github="example" 
+                        email="example@example.com"
+                        className="flex-none mx-5" 
+                        titleClass="sr-only" 
+                        ulClass="flex justify-items-end" 
+                        liClass="mx-2 uppercase text-gray-700 text-sm hover:text-red-800"
+                    />
                 </div>
             </header>
         );
