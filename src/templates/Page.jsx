@@ -7,11 +7,11 @@ class Page extends React.Component{
         return(
             <div>
                 <Header />
-                <div className="fixed z-10">
+                <div className="mt-10 md:mt-0 md:fixed z-10">
                     <img src="https://i.pinimg.com/originals/b5/60/ca/b560ca9bd65061bda698321a17d22f34.jpg" alt="heading of article" className="object-cover w-screen z-0"/>
                 </div>
-                <div className="absolute z-20 mt-32 flex-row space-y-0">
-                    <main id="page" className="mx-32 min-h-max px-10 py-5 mb-32 bg-black bg-opacity-80 text-gray-200 font-serif font-extralight">                    
+                <div className="md:absolute md:z-20 md:mt-32 flex-row space-y-0">
+                    <main id="page" className="md:mx-32 min-h-max px-5 md:px-10 py-5 md:mb-32 bg-black bg-opacity-80 text-gray-200 font-serif font-extralight">                    
                         <h1 className="text-center font-sans font-light uppercase text-3xl my-5">Stránka</h1>                        
                             <p className="my-2">
                                 Jenže kvůli všudy <a href="/#" className="font-medium hover:text-white hover:underline">Link</a> přítomné trávě jsou stíny balónků sotva vidět, natož aby šlo rozeznat, jakou barvu tyto stíny mají. Uvidět tak balónky náhodný kolemjdoucí, jistě by si pomyslel, že už tu takhle poletují snad tisíc let. Stále si víceméně drží výšku a ani do stran se příliš nepohybují. Proti slunci to vypadá, že se slunce pohybuje k západu rychleji než balónky, a možná to tak skutečně je. Nejeden filozof by mohl tvrdit, že balónky se sluncem závodí, ale fyzikové by to jistě vyvrátili. Z fyzikálního pohledu totiž balónky působí zcela nezajímavě. Nejvíc bezpochyby zaujmou děti - jedna malá holčička zrovna včera div nebrečela, že by snad balónky mohly prasknout. A co teprve ta stuha. Stuha, kterou je každý z trojice balónků uvázán, aby se nevypustil. Očividně je uvázaná dostatečně pevně, protože balónky skutečně neucházejí. To ale není nic zvláštního. Překvapit by však mohl fakt, že nikdo, snad krom toho, kdo balónky k obloze vypustil, netuší, jakou má ona stuha barvu.

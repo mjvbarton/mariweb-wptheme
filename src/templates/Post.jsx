@@ -11,11 +11,11 @@ class Post extends React.Component{
         return(
             <div>
                 <Header />
-                <div className="fixed z-10">
+                <div className="mt-10 md:mt-0 md:fixed z-10">
                     <img src="https://i.pinimg.com/originals/b5/60/ca/b560ca9bd65061bda698321a17d22f34.jpg" alt="heading of article" className="object-cover w-screen z-0"/>
                 </div>
-                <div className="absolute z-20 mt-32 flex-row space-y-0">
-                    <main id="page" className="mx-32 min-h-max px-10 py-5 mb-32 bg-white font-serif font-light">                    
+                <div className="md:absolute md:z-20 md:mt-32 flex-row space-y-0">
+                    <main id="page" className="md:mx-32 min-h-max px-5 md:px-10 py-5 md:mb-32 bg-white font-serif font-light">                    
                         <h1 className="text-left font-sans font-medium text-red-800 text-3xl mb-2">Článek</h1>
                             <PostMeta />
                             <p className="my-2">
@@ -49,14 +49,14 @@ class Post extends React.Component{
                                 <li>Položka 2</li>
                                 <li>Položka 3</li>
                             </ol>
-                            <Tags className="mt-10">
+                            <Tags className="mt-10 text-xs md:text-base">
                                 <TagLink title="Štítek 1" slug="stitek-1" />
                                 <TagLink title="Štítek 2" slug="stitek-2" />
                                 <TagLink title="Štítek 3" slug="stitek-3" />
                                 <TagLink title="Štítek 4" slug="stitek-4" />
                             </Tags>                        
                     </main> 
-                    <PostContainer id="relatedPosts" title="Související články" className="bg-white h-full p-10"/>                   
+                    <PostContainer id="relatedPosts" title="Související články" className="bg-white h-full py-10 md:px-10"/>                   
                     <Footer />
                 </div>
             </div>
