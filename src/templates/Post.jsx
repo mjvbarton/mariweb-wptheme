@@ -15,7 +15,7 @@ class Post extends React.Component{
                     <img src="https://i.pinimg.com/originals/b5/60/ca/b560ca9bd65061bda698321a17d22f34.jpg" alt="heading of article" className="object-cover w-screen z-0"/>
                 </div>
                 <div className="md:absolute md:z-20 md:mt-32 flex-row space-y-0">
-                    <main id="page" className="md:mx-32 min-h-max px-5 md:px-10 py-5 md:mb-32 bg-white font-serif font-light">                    
+                    <main id="post" className="md:mx-32 min-h-max px-5 md:px-10 py-5 md:mb-32 bg-white font-serif font-light">                    
                         <h1 className="text-left font-sans font-medium text-red-800 text-3xl mb-2">Článek</h1>
                             <PostMeta />
                             <p className="my-2">

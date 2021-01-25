@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PostMeta from './PostMeta';
-import TagLink from './TagLink';
-import Tags from './Tags';
 
 class PostSummary extends React.Component{
     render(){

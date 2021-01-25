@@ -163,13 +163,13 @@ module.exports = {
     },
     fontFamily: {      
       sans: [        
-        'Montserrat',
+        'Amatic SC',
         'ui-sans-serif',
         'system-ui',
         '-apple-system',
         'sans-serif'
       ],
-      serif: ['Roboto Slab', 'ui-serif', 'serif'],
+      serif: ['Josefin Slab', 'ui-serif', 'serif'],
       mono: [
         'ui-monospace',
         'SFMono-Regular',
