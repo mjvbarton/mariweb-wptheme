@@ -9,14 +9,14 @@ import SocialSites from '../components/navs/SocialSites';
 class Footer extends React.Component{
     render(){
         return(
-            <footer className="bg-gray-700 text-gray-300 text-xs font-serif font-light z-40">
+            <footer className="bg-gray-700 text-gray-300 text-xs font-mono font-light z-40">
                 <div className="mx-auto py-10 px-5 md:px-0 text-center">
                     <div id="donate" className="mb-10">
-                        <h2 className="font-sans font-medium text-base md:text-lg text-white">Líbí se vám, co dělám? Podpořte mě!</h2>
-                        <p className="md:text-sm">
+                        <h2 className="font-sans font-medium text-2xl text-white">Líbí se vám, co dělám? Podpořte mě!</h2>
+                        <p className="text-sm md:text-base">
                             {this.props.donateText}
                         </p>
-                        <div id="patreon-button-placeholder" className="p-3 mx-auto my-5 bg-red-500 hover:bg-red-600 hover:text-gray-300 max-w-max text-white font-sans font-medium cursor-pointer">
+                        <div id="patreon-button-placeholder" className="p-3 mx-auto my-5 bg-red-500 hover:bg-red-600 hover:text-gray-300 max-w-max text-white font-patreon cursor-pointer">
                             <FontAwesomeIcon icon={faPatreon} className="mr-2"/>
                             Become a Patron!
                         </div> 
@@ -36,7 +36,7 @@ class Footer extends React.Component{
                         ulClass="flex items-center justify-center"
                         liClass="mx-3 text-lg hover:text-white"
                     />
-                    <div id="copyright" className="mt-7">
+                    <div id="copyright" className="mt-7 text-xs">
                         <p>
                             &copy; {this.props.copyrightText}
                         </p>

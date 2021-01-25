@@ -163,14 +163,15 @@ module.exports = {
     },
     fontFamily: {      
       sans: [        
-        'Montserrat',
+        'Amatic SC',
         'ui-sans-serif',
         'system-ui',
         '-apple-system',
         'sans-serif'
       ],
-      serif: ['Josephin Slab', 'ui-serif', 'serif'],
-      mono: [
+      serif: ['Roboto Slab', 'ui-serif', 'serif'],
+      mono: [        
+        'Poiret One',
         'ui-monospace',
         'SFMono-Regular',
         'Menlo',
@@ -179,7 +180,13 @@ module.exports = {
         '"Liberation Mono"',
         '"Courier New"',
         'monospace',
-      ],
+      ],      
+      patreon: [
+        'ui-sans-serif',
+        'system-ui',
+        '-apple-system',
+        'sans-serif'
+      ]
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],

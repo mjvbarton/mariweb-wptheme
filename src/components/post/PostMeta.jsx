@@ -15,7 +15,7 @@ class PostMeta extends React.Component{
     render(){
         return(
             <div className={this.props.className}>
-                <ul className="md:flex md:items-center text-gray-500 font-serif font-light text-xs md:text-sm">
+                <ul className="md:flex md:items-center text-gray-500 font-mono font-light text-xs md:text-sm">
                     <li className="my-1 md:my-0 mx-3">
                         <FontAwesomeIcon icon={faUser} className="mr-2 text-gray-400"/>
                         <span className="sr-only">Autor:</span>

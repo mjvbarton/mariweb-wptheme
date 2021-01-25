@@ -11,7 +11,7 @@ class Contact extends React.Component{
                     <img src="https://i.pinimg.com/originals/b5/60/ca/b560ca9bd65061bda698321a17d22f34.jpg" alt="heading of article" className="object-cover w-screen z-0"/>
                 </div>
                 <div className="md:absolute md:z-20 md:mt-32 flex-row space-y-0 md:w-full">
-                    <main id="contact" className="md:mx-32 min-h-max px-5 md:px-10 py-5 md:mb-32 bg-black bg-opacity-80 text-gray-200 font-serif font-extralight">                    
+                    <main id="contact" className="md:mx-32 min-h-max px-5 md:px-10 py-5 md:mb-32 bg-black bg-opacity-80 text-gray-200 font-mono font-extralight">                    
                         <h1 className="text-left font-sans font-light uppercase text-3xl my-5">Kontakt</h1>                        
                         <p>Líbí se vám moje práce? Máte nějaký dotaz? Neváhejte a napište mi!</p>
                         <form id="contactMail">
