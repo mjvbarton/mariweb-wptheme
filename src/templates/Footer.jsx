@@ -10,10 +10,10 @@ class Footer extends React.Component{
     render(){
         return(
             <footer className="bg-gray-700 text-gray-300 text-xs font-serif font-light z-40">
-                <div className="mx-auto py-10 text-center">
+                <div className="mx-auto py-10 px-5 md:px-0 text-center">
                     <div id="donate" className="mb-10">
-                        <h2 className="font-sans font-medium text-lg text-white">Líbí se vám, co dělám? Podpořte mě!</h2>
-                        <p className="text-sm">
+                        <h2 className="font-sans font-medium text-base md:text-lg text-white">Líbí se vám, co dělám? Podpořte mě!</h2>
+                        <p className="md:text-sm">
                             {this.props.donateText}
                         </p>
                         <div id="patreon-button-placeholder" className="p-3 mx-auto my-5 bg-red-500 hover:bg-red-600 hover:text-gray-300 max-w-max text-white font-sans font-medium cursor-pointer">

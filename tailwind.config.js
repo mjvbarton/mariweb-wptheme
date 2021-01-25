@@ -162,14 +162,14 @@ module.exports = {
       DEFAULT: '1',
     },
     fontFamily: {      
-      sans: [
+      sans: [        
+        'Montserrat',
         'ui-sans-serif',
         'system-ui',
         '-apple-system',
-        'Montserrat',
         'sans-serif'
       ],
-      serif: ['ui-serif', 'Roboto Slab', 'serif'],
+      serif: ['Roboto Slab', 'ui-serif', 'serif'],
       mono: [
         'ui-monospace',
         'SFMono-Regular',
