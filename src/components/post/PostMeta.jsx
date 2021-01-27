@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
 class PostMeta extends React.Component{
-    formatDate(date){             
-        return date.toLocaleDateString('cs', {day: 'numeric', month: 'long', year: 'numeric'});
+    formatDate(date){ 
+        const theDate = new Date(date);            
+        return theDate.toLocaleDateString('cs', {day: 'numeric', month: 'long', year: 'numeric'});
     }
 
     formatTime(date){
-        let theDate = new Date(date);
+        const theDate = new Date(date);  
         return theDate.toLocaleTimeString('cs', {hour: 'numeric', minute: 'numeric'});
     }
 
@@ -37,7 +38,7 @@ class PostMeta extends React.Component{
     }
 }
 
-PostMeta.propTypes = {
+PostMeta.propTypes = {   
     
 }
 

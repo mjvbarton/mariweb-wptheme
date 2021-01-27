@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React from 'react';
 import PostContainer from '../components/post/PostContainer';
+import ReactHtmlParser from 'react-html-parser';
 import PostMeta from '../components/post/PostMeta';
 import TagLink from '../components/post/TagLink';
 import Tags from '../components/post/Tags';
@@ -7,6 +9,22 @@ import Footer from './Footer';
 import Header from './Header';
 
 class Post extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            post: null,
+        }
+    }
+
+    componentDidMount(){
+        axios.get('https://wordpress.localhost/wp-json/better-rest-endpoints/v1/posts/29')
+        .then((response) => {
+            this.setState({
+                post: response.data
+            });
+        })
+    }
+
     render(){
         return(
             <div>
@@ -14,59 +32,22 @@ class Post extends React.Component{
                 <div className="mt-10 md:mt-0 md:fixed z-10">
                     <img src="https://i.pinimg.com/originals/b5/60/ca/b560ca9bd65061bda698321a17d22f34.jpg" alt="heading of article" className="object-cover w-screen z-0"/>
                 </div>
-                <div className="md:absolute md:z-20 md:mt-32 flex-row space-y-0">
-                    <main id="post" className="typography light-colors dark:dark-colors md:mx-32 min-h-max px-5 md:px-10 py-5 md:mb-32">                    
-                        <h1>Článek</h1>
-                            <PostMeta />
-                            <p>
-                                Jenže <strong>kvůli všudy</strong> <a href="/#">Link</a> <em>přítomné trávě</em> jsou stíny balónků sotva vidět, natož aby šlo rozeznat, jakou barvu tyto stíny mají. Uvidět tak balónky náhodný kolemjdoucí, jistě by si pomyslel, že už tu takhle poletují snad tisíc let. Stále si víceméně drží výšku a ani do stran se příliš nepohybují. Proti slunci to vypadá, že se slunce pohybuje k západu rychleji než balónky, a možná to tak skutečně je. Nejeden filozof by mohl tvrdit, že balónky se sluncem závodí, ale fyzikové by to jistě vyvrátili. Z fyzikálního pohledu totiž balónky působí zcela nezajímavě. Nejvíc bezpochyby zaujmou děti - jedna malá holčička zrovna včera div nebrečela, že by snad balónky mohly prasknout. A co teprve ta stuha. Stuha, kterou je každý z trojice balónků uvázán, aby se nevypustil. Očividně je uvázaná dostatečně pevně, protože balónky skutečně neucházejí. To ale není nic zvláštního. Překvapit by však mohl fakt, že nikdo, snad krom toho, kdo balónky k obloze vypustil, netuší, jakou má ona stuha barvu.
-                            </p>
-                            <figure>
-                                <img src="https://jordicomas.org/wp-content/uploads/2019/01/Sample-16x9-image_1080px.jpg" alt="sample"/>
-                                <figcaption>Náhodný obrázek z cest</figcaption>
-                            </figure>
-                            <h2>Nadpis 2</h2>
-                            <p>
-                                Je totiž tak lesklá, že za světla se v ní odráží nebe a za tmy zase není vidět vůbec. Když svítí slunce tak silně jako nyní, tak se stuha třpytí jako kapka rosy a jen málokdo vydrží dívat se na ni přímo déle než pár chvil. Jak vlastně vypadají ony balónky?. Ptají se často lidé. Inu jak by vypadaly - jako běžné pouťové balónky střední velikosti, tak akorát nafouknuté. Červený se vedle modrého a zeleného zdá trochu menší, ale to je nejspíš jen optický klam, a i kdyby byl skutečně o něco málo menší, tak vážně jen o trošičku.
-                            </p>
-                            <h3>Nadpis 3</h3>
-                            <p>
-                                Vítr skoro nefouká a tak by se na první pohled mohlo zdát, že se balónky snad vůbec nepohybují. Jenom tak klidně levitují ve vzduchu. Jelikož slunce jasně září a na obloze byste od východu k západu hledali mráček marně, balónky působí jako jakási fata morgána uprostřed pouště. Zkrátka široko daleko nikde nic, jen zelenkavá tráva, jasně modrá obloha a tři křiklavě barevné pouťové balónky, které se téměř nepozorovatelně pohupují ani ne moc vysoko, ani moc nízko nad zemí. Kdyby pod balónky nebyla sytě zelenkavá tráva, ale třeba suchá silnice či beton, možná by bylo vidět jejich barevné stíny - to jak přes poloprůsvitné barevné balónky prochází ostré sluneční paprsky. Jenže kvůli všudy přítomné trávě jsou stíny balónků sotva vidět, natož aby šlo rozeznat, jakou barvu tyto stíny mají. Uvidět tak balónky náhodný kolemjdoucí, jistě by si pomyslel, že už tu takhle poletují snad tisíc let. Stále si víceméně drží výšku a ani do stran se příliš nepohybují. Proti slunci to vypadá, že se slunce pohybuje k západu rychleji než balónky, a možná to tak skutečně je. Nejeden filozof by mohl tvrdit, že balónky se sluncem závodí, ale fyzikové by to jistě vyvrátili.
-                            </p>       
-                            <h4>Nadpis 4</h4>
-                            <p>
-                                Z fyzikálního pohledu totiž balónky působí zcela nezajímavě. Nejvíc bezpochyby zaujmou děti - jedna malá holčička zrovna včera div nebrečela, že by snad balónky mohly prasknout. A co teprve ta stuha. Stuha, kterou je každý z trojice balónků uvázán, aby se nevypustil. Očividně je uvázaná dostatečně pevně, protože balónky skutečně neucházejí. To ale není nic zvláštního. Překvapit by však mohl fakt, že nikdo, snad krom toho, kdo balónky k obloze vypustil, netuší, jakou má ona stuha barvu. Je totiž tak lesklá, že za světla se v ní odráží nebe a za tmy zase není vidět vůbec. Když svítí slunce tak silně jako nyní, tak se stuha třpytí jako kapka rosy a jen málokdo vydrží dívat se na ni přímo déle než pár chvil. Jak vlastně vypadají ony balónky?. Ptají se často lidé. Inu jak by vypadaly - jako běžné pouťové balónky střední velikosti, tak akorát nafouknuté.
-                            </p>
-                            <h5>Nadpis 5</h5>
-                            <p>
-                                Z fyzikálního pohledu totiž balónky působí zcela nezajímavě. Nejvíc bezpochyby zaujmou děti - jedna malá holčička zrovna včera div nebrečela, že by snad balónky mohly prasknout. A co teprve ta stuha. Stuha, kterou je každý z trojice balónků uvázán, aby se nevypustil. Očividně je uvázaná dostatečně pevně, protože balónky skutečně neucházejí. To ale není nic zvláštního. Překvapit by však mohl fakt, že nikdo, snad krom toho, kdo balónky k obloze vypustil, netuší, jakou má ona stuha barvu. Je totiž tak lesklá, že za světla se v ní odráží nebe a za tmy zase není vidět vůbec. Když svítí slunce tak silně jako nyní, tak se stuha třpytí jako kapka rosy a jen málokdo vydrží dívat se na ni přímo déle než pár chvil. Jak vlastně vypadají ony balónky?. Ptají se často lidé. Inu jak by vypadaly - jako běžné pouťové balónky střední velikosti, tak akorát nafouknuté.
-                            </p>
-                            <h6>Nadpis 6</h6>
-                            <p>
-                                Z fyzikálního pohledu totiž balónky působí zcela nezajímavě. Nejvíc bezpochyby zaujmou děti - jedna malá holčička zrovna včera div nebrečela, že by snad balónky mohly prasknout. A co teprve ta stuha. Stuha, kterou je každý z trojice balónků uvázán, aby se nevypustil. Očividně je uvázaná dostatečně pevně, protože balónky skutečně neucházejí. To ale není nic zvláštního. Překvapit by však mohl fakt, že nikdo, snad krom toho, kdo balónky k obloze vypustil, netuší, jakou má ona stuha barvu. Je totiž tak lesklá, že za světla se v ní odráží nebe a za tmy zase není vidět vůbec. Když svítí slunce tak silně jako nyní, tak se stuha třpytí jako kapka rosy a jen málokdo vydrží dívat se na ni přímo déle než pár chvil. Jak vlastně vypadají ony balónky?. Ptají se často lidé. Inu jak by vypadaly - jako běžné pouťové balónky střední velikosti, tak akorát nafouknuté.
-                            </p>
-                            <h2>Neřazený seznam</h2>
-                            <ul>
-                                <li>Položka 1</li>
-                                <li>Položka 2</li>
-                                <li>Položka 3</li>
-                            </ul>
-                            <h2>Řazený seznam</h2>
-                            <ol>
-                                <li>Položka 1</li>
-                                <li>Položka 2</li>
-                                <li>Položka 3</li>
-                            </ol>
-                            <Tags className="mt-10 text-xs md:text-base">
-                                <TagLink title="Štítek 1" slug="stitek-1" />
-                                <TagLink title="Štítek 2" slug="stitek-2" />
-                                <TagLink title="Štítek 3" slug="stitek-3" />
-                                <TagLink title="Štítek 4" slug="stitek-4" />
-                            </Tags>                        
-                    </main> 
-                    <PostContainer id="relatedPosts" title="Související články" className="bg-white h-full py-10 md:px-10"/>                   
-                    <Footer />
-                </div>
+                {this.state.post &&
+                    <div className="md:absolute md:z-20 md:mt-32 flex-row space-y-0">                    
+                            <main id="post" className="typography light-colors dark:dark-colors md:mx-32 min-h-max px-5 md:px-10 py-5 md:mb-32">                    
+                                <h1>{this.state.post.title}</h1>
+                                    <PostMeta className="mb-2" author={this.state.post.author_nicename} created={this.state.post.date}/>
+                                    {ReactHtmlParser(this.state.post.content)}                                                        
+                                    <Tags className="mt-10 text-xs md:text-base">
+                                        {this.state.post.tags.map((tag) =>
+                                            <TagLink title={tag.name} slug={tag.slug} key={tag.id} />
+                                        )}
+                                    </Tags>                        
+                            </main>                                             
+                        <PostContainer id="relatedPosts" title="Související články" className="bg-white h-full py-10 md:px-10"/>                
+                        <Footer />                    
+                    </div>
+                }
             </div>
         );
     }
