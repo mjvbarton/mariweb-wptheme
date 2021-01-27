@@ -11,7 +11,7 @@ class Page extends React.Component{
                     <img src="https://i.pinimg.com/originals/b5/60/ca/b560ca9bd65061bda698321a17d22f34.jpg" alt="heading of article" className="object-cover w-screen z-0"/>
                 </div>
                 <div className="md:absolute md:z-20 md:mt-32 flex-row space-y-0">
-                    <main id="page" className="md:mx-32 min-h-max px-5 md:px-10 py-5 md:mb-32 typography dark-colors">                    
+                    <main id="page" className="md:mx-32 min-h-max px-5 md:px-10 py-5 md:mb-32 typograph dark-colors">                    
                         <h1 className="text-center">Stránka</h1>                            
                         <p>
                             Jenže <strong>kvůli všudy</strong> <a href="/#">Link</a> <em>přítomné trávě</em> jsou stíny balónků sotva vidět, natož aby šlo rozeznat, jakou barvu tyto stíny mají. Uvidět tak balónky náhodný kolemjdoucí, jistě by si pomyslel, že už tu takhle poletují snad tisíc let. Stále si víceméně drží výšku a ani do stran se příliš nepohybují. Proti slunci to vypadá, že se slunce pohybuje k západu rychleji než balónky, a možná to tak skutečně je. Nejeden filozof by mohl tvrdit, že balónky se sluncem závodí, ale fyzikové by to jistě vyvrátili. Z fyzikálního pohledu totiž balónky působí zcela nezajímavě. Nejvíc bezpochyby zaujmou děti - jedna malá holčička zrovna včera div nebrečela, že by snad balónky mohly prasknout. A co teprve ta stuha. Stuha, kterou je každý z trojice balónků uvázán, aby se nevypustil. Očividně je uvázaná dostatečně pevně, protože balónky skutečně neucházejí. To ale není nic zvláštního. Překvapit by však mohl fakt, že nikdo, snad krom toho, kdo balónky k obloze vypustil, netuší, jakou má ona stuha barvu.

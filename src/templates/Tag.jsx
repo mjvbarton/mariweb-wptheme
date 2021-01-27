@@ -11,7 +11,7 @@ class Tag extends React.Component{
                 <div className="mt-10 md:mt-0 md:fixed z-10">
                     <img src="https://i.pinimg.com/originals/b5/60/ca/b560ca9bd65061bda698321a17d22f34.jpg" alt="background" className="object-cover w-screen z-0"/>
                 </div>
-                <div className="md:absolute md:z-20 md:mt-32 flex-row space-y-0">
+                <div className="md:absolute md:z-20 md:mt-32 flex-row space-y-0 min-w-full">
                     <main id="tag" className="md:mx-auto md:max-w-2xl px-10 py-5 md:mb-32 bg-black bg-opacity-80 text-gray-200 font-mono text-sm md:text-base font-extralight">                    
                         <h1 className="text-center font-sans font-light uppercase text-4xl md:text-5xl my-5">#Štítek 1</h1>
                         <section id="description">

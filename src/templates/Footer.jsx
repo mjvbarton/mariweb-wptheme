@@ -9,7 +9,7 @@ import SocialSites from '../components/navs/SocialSites';
 class Footer extends React.Component{
     render(){
         return(
-            <footer className="bg-gray-700 text-gray-300 text-xs font-mono font-light z-40">
+            <footer className="bg-gray-700 text-gray-300 text-xs font-mono font-light z-40 place-self-end">
                 <div className="mx-auto py-10 px-5 md:px-0 text-center">
                     <div id="donate" className="mb-10">
                         <h2 className="font-sans font-medium text-2xl text-white">Líbí se vám, co dělám? Podpořte mě!</h2>
