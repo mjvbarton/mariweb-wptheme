@@ -1,0 +1,67 @@
+.typography{
+    @apply font-mono font-light;
+}
+
+.typography h1, .typography h2, .typography h3, .typography h4, .typography h5, .typography h6{
+    @apply font-sans font-medium mt-5 mb-1;
+}
+
+.typography h1{
+    @apply text-5xl mt-0 mb-2;
+}
+
+.typography h2{
+    @apply text-4xl;
+}
+
+.typography h3{
+    @apply text-3xl;
+}
+
+.typography h4{
+    @apply text-2xl;
+}
+
+.typography h5{
+    @apply text-xl;
+}
+
+.typography h6{
+    @apply text-lg;
+}
+
+.typography p{
+    @apply my-2;
+}
+
+.typography strong{
+    @apply font-bold;
+}
+
+.typography em{
+    @apply italic;
+}
+
+.typography a{
+    @apply font-bold hover:underline;
+}
+
+.typography ul{
+    @apply list-inside list-disc;
+}
+
+.typography header ul{
+    @apply list-none;
+}
+
+.typography ol{
+    @apply list-inside list-decimal;
+}
+
+.typography figure{
+    @apply my-5;
+}
+
+.typography figure figcaption{
+    @apply text-sm text-center;
+}

@@ -1,0 +1,38 @@
+/* Base for color usage */
+@tailwind utilities;
+
+/**
+* Light color scheme
+*
+*/
+.light-colors{
+    @apply bg-white font-mono font-light text-gray-900;
+}
+
+.light-colors h1, .light-colors h2, .light-colors h3, .light-colors h4, .light-colors h5, .light-colors h6{
+    @apply text-red-800;
+}
+
+.light-colors a{
+    @apply text-red-800 hover:text-red-600;
+}
+
+.light-colors figure figcaption{
+    @apply text-gray-600;
+}
+
+/**
+* Dark color scheme
+* FIXME: Implement working dark mode
+*/
+.dark-colors{
+    @apply bg-black bg-opacity-70 text-gray-200;
+}
+
+.dark-colors h1, .dark-colors h2, .dark-colors h3, .dark-colors h4, .dark-colors h5, .dark-colors h6{
+    @apply text-white;
+}
+
+.dark-colors a{
+    @apply text-red-300 hover:text-red-100;
+}
