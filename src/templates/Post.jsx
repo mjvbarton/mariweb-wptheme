@@ -14,16 +14,41 @@ class Post extends React.Component{
         super(props);
         this.state = {
             post: null,
+            errorTitle: null,
+            errorDescription: null,
         }
     }
 
     componentDidMount(){        
-        axios.get(`https://wordpress.localhost/wp-json/better-rest-endpoints/v1/posts/${this.props.match.params.postSlug}`)
-        .then((response) => {
-            this.setState({
-                post: Array.isArray(response.data) ? false : response.data,                                
-            });
-        })
+        this.loadPost()
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if(this.props.match.params.postSlug !== prevProps.match.params.postSlug){
+            this.loadPost();
+        }
+    }
+
+    loadPost(){
+        this.setState({
+            post: null,
+            errorTitle: null,
+            errorMessage: null,
+        }, () => {
+            axios.get(`https://wordpress.localhost/wp-json/better-rest-endpoints/v1/posts/${this.props.match.params.postSlug}`)
+            .then((response) => {
+                this.setState({
+                    post: Array.isArray(response.data) ? false : response.data,                                
+                });
+            })
+            .catch((error) => {            
+                console.error('Unexpected error caught:', error);
+                this.setState({
+                    errorTitle: 'Chyba aplikace',
+                    errorDescription: 'V aplikaci se vyskytla neočekávaná chyba. Zobrazte konzoli pro více informací.',                                  
+                })
+            });            
+        });        
     }
 
     render(){
@@ -56,10 +81,13 @@ class Post extends React.Component{
                                     </Tags>                        
                             </main>     
                 }
+                {this.state.errorTitle && 
+                    <PageError title={this.state.errorTitle} description={this.state.errorDescription} />
+                }
                 {(this.state.post) != null && !this.state.post  &&                    
                     <PageError title="Článek nenalezen" description="Článek, který jste hledali neexistuje. Nejspíš jste zadali špatnou adresu." />
                 }        
-                {this.state.post &&                                                 
+                {this.state.post &&                                        
                         <PostContainer id="relatedPosts" title="Související články" className="bg-white h-full py-10 md:px-10" exclude={this.state.post.id} categoryName={this.state.post.categories[0].slug} perPage={3}/> 
                 }
                 {(this.state.post) != null  &&               
