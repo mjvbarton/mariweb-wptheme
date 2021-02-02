@@ -69,7 +69,7 @@ class Category extends React.Component{
                 <div className="mt-10 md:mt-0 md:fixed z-10">
                     <img src="https://i.pinimg.com/originals/b5/60/ca/b560ca9bd65061bda698321a17d22f34.jpg" alt="heading of article" className="object-cover w-screen z-0"/>
                 </div>
-                <div className="md:absolute md:z-20 md:mt-32 flex-row space-y-0 min-w-full">
+                <div className="md:absolute md:z-20 md:mt-32 flex-row space-y-0 min-w-full min-h-full">
                     {this.state.categoryName &&
                         <main id="category" className="md:mx-auto md:max-w-2xl px-10 py-5 md:mb-32 typography dark-colors font-mono text-sm md:text-base font-extralight">                    
                             <h1 className="text-center">{this.state.categoryName}</h1>
