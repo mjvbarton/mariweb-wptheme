@@ -148,6 +148,9 @@ if ( ! function_exists( 'mariweb_setup' ) ) {
 		// Add support for custom units.
 		// This was removed in WordPress 5.6 but is still required to properly support WP 5.5.
 		// add_theme_support( 'custom-units' );
+
+		// Includes module for social sites
+		require_once(get_template_directory() . '/inc/social-sites.php');
 	}
 }
 add_action( 'after_setup_theme', 'mariweb_setup' );
