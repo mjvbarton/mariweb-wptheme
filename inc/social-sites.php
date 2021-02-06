@@ -69,8 +69,7 @@
 
 function social_sites_customizer(WP_Customize_Manager $wpc){    
     $wpc->add_section('mariweb-si-section', array(
-        'title' => __('Sociální sítě', 'mariweb-wptheme'),        
-        'priority' => 30,
+        'title' => __('Sociální sítě', 'mariweb-wptheme'),                
         'description' => 'Zadejte názvy profilů na vybraných sociálních sítích. Ikona sítě se nezobrazí pokud nevyplníte příslušné pole.'
     ));
 

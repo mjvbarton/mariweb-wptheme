@@ -137,7 +137,7 @@ if ( ! function_exists( 'mariweb_setup' ) ) {
 		add_theme_support( 'responsive-embeds' );
 
 		// Add support for custom line height controls.
-		add_theme_support( 'custom-line-height' );
+		// add_theme_support( 'custom-line-height' );		
 
 		// Add support for experimental link color control.
 		// add_theme_support( 'experimental-link-color' );
@@ -149,8 +149,17 @@ if ( ! function_exists( 'mariweb_setup' ) ) {
 		// This was removed in WordPress 5.6 but is still required to properly support WP 5.5.
 		// add_theme_support( 'custom-units' );
 
+		// Edits excerpt
+		add_filter( 'excerpt_more', function(){
+			return '';
+		});
+
 		// Includes module for social sites
 		require_once(get_template_directory() . '/inc/social-sites.php');
+		require_once(get_template_directory() . '/inc/front-page.php');
+		require_once(get_template_directory() . '/inc/backgrounds.php');
+		require_once(get_template_directory() . '/inc/customize-footer.php');
+		require_once(get_template_directory() . '/inc/aggregate-api.php');
 	}
 }
 add_action( 'after_setup_theme', 'mariweb_setup' );
@@ -195,4 +204,13 @@ function mariweb_scripts() {
 	}	
 }
 add_action( 'wp_enqueue_scripts', 'mariweb_scripts' );
+
+function hide_defaults_in_customizer(WP_Customize_Manager $wpc){	
+    $wpc->remove_section( 'colors');
+    $wpc->remove_section( 'header_image');
+    $wpc->remove_section( 'background_image');    
+    $wpc->remove_section( 'static_front_page');
+    $wpc->remove_section( 'custom_css');
+}
+add_action('customize_register', 'hide_defaults_in_customizer', 50);
 
