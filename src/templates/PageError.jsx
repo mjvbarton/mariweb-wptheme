@@ -1,5 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+/**
+ * Fallback UI of the application.
+ * @author mjvbarton
+ * @since 1.0.0
+ * @todo Move this to ./util
+ */
 class PageError extends React.Component{
     render(){
         return( 
@@ -9,6 +16,23 @@ class PageError extends React.Component{
             </main>
         )
     }
+}
+
+PageError.propTypes = {
+    /**
+     * The title of the error.
+     * @default 'Chyba aplikace'
+     */
+    title: PropTypes.string,
+
+    /**
+     * The required description of the error.
+     */
+    description: PropTypes.string.isRequired,
+}
+
+PageError.defaultProps = {
+    title: 'Chyba aplikace'
 }
 
 export default PageError;

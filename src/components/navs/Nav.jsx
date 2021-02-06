@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * Represents the main navigation bar.
+ * @author mjvbarton
+ * @since 1.0.0
+ */
 class Nav extends React.Component{
     render(){
         return(

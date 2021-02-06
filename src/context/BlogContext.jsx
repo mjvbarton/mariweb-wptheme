@@ -1,7 +1,15 @@
 import React from 'react';
 
+/**
+ * Represents the state of App.
+ * @see App
+ * @author mjvbarton
+ * @since 1.0.0
+ */
 export const BlogInfo = {   
     apiBaseUrl: 'https://wordpress.localhost/wp-json',
+    error: null,
+    handleError: (error) => {},
     meta: {
         name: null,
         description: null,

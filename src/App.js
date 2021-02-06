@@ -1,16 +1,25 @@
-import React from "react";
-import Category from "./templates/Category";
-import Page from "./templates/Page";
-import Post from "./templates/Post";
-import {Switch, BrowserRouter, Route} from 'react-router-dom';
-import FrontPage from "./templates/FrontPage";
-import Tag from "./templates/Tag";
-import ScrollToTop from "./util/ScrolToTop";
-import Contact from "./templates/Contact";
-import PageLoader from "./util/PageLoader";
-import { BlogContext, BlogInfo } from "./context/BlogContext";
-import axios from "axios";
+import React from 'react';
+import Category from './templates/Category';
+import Page from './templates/Page';
+import Post from './templates/Post';
+import {Switch, Route, withRouter} from 'react-router-dom';
+import FrontPage from './templates/FrontPage';
+import Tag from './templates/Tag';
+import ScrollToTop from './util/ScrolToTop';
+import Contact from './templates/Contact';
+import PageLoader from './util/PageLoader';
+import { BlogContext, BlogInfo } from './context/BlogContext';
+import axios from 'axios';
+import Header from './templates/Header';
+import Background from './util/Background';
+import Footer from './templates/Footer';
+import PageError from './templates/PageError';
 
+/**
+ * Mari's blog client application.
+ * @author mjvbarton
+ * @since 1.0.0
+ */
 class App extends React.Component{
     constructor(props){
         super(props);
@@ -20,10 +29,15 @@ class App extends React.Component{
             socialSites: BlogInfo.socialSites,
             error: null,
         };
+
+        this.handleError = this.handleError.bind(this);        
     }
 
+    /**
+     * Loads info on mount
+     */
     componentDidMount(){
-        /**
+        /*
          * Loading blog info
          */
         axios.get(BlogInfo.apiBaseUrl)
@@ -42,14 +56,16 @@ class App extends React.Component{
         .catch((error) => {
             console.log(error);
             this.setState({
-                error: "Nezdařilo se načíst základní informace o blogu. Pro více informací zobrazte konzoli.",
+                error: {
+                    description: 'Nezdařilo se načíst základní informace o blogu. Pro více informací zobrazte konzoli.'
+                },
             });
         })
         
-        /**
+        /*
          * Loading primary menu
          */
-        axios.get(BlogInfo.apiBaseUrl + '/better-rest-endpoints/v1/menus/location/primary')
+        axios.get(`${BlogInfo.apiBaseUrl}/better-rest-endpoints/v1/menus/location/primary`)
         .then((response) => {
             this.setState({
                 primaryMenu: response.data
@@ -58,14 +74,16 @@ class App extends React.Component{
         .catch((error) => {
             console.log(error);
             this.setState({
-                error: "Nezdařilo se načíst hlavní menu. Pro více informací zobrazte konzoli."
+                error: {
+                    description: 'Nezdařilo se načíst hlavní menu. Pro více informací zobrazte konzoli.'
+                },
             });
         })
 
-        /**
+        /*
          * Loading Social sites
          */
-        axios.get(BlogInfo.apiBaseUrl + '/mariweb-wptheme/v1/socialsites')
+        axios.get(`${BlogInfo.apiBaseUrl}/mariweb-wptheme/v1/socialsites`)
         .then((response) => {
             this.setState({
                 socialSites: response.data,
@@ -74,33 +92,72 @@ class App extends React.Component{
         .catch((error) => {
             console.log(error);
             this.setState({
-                error: "Nezdařilo se načíst sociální sítě. Pro více informací zobrazte konzoli."
+                error: {
+                    description: 'Nezdařilo se načíst sociální sítě. Pro více informací zobrazte konzoli.',
+                },
             });
         });
+    }   
+    
+    /**
+     * Clears errors when window.location changes
+     * @param {*} prevProps previous props
+     * @param {*} prevState previous state
+     */
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps.location !== this.props.location){
+            this.setState({
+                error: null,
+            });
+        }
     }
+    
+    /**
+     * Handle errors in components
+     * @param {*} error 
+     */
+    handleError(error){
+        this.setState({
+            error: error,
+        });
+    }
+
     render(){        
         return (
-            <div className="App">
+            <div className='App'>
                 {(!this.state.meta || !this.state.socialSites || !this.state.primaryMenu) ?
                     <PageLoader error={this.state.error} />
                     :
                     <BlogContext.Provider value={{
                         apiBaseUrl: BlogInfo.apiBaseUrl,
+                        error: this.state.error,
+                        handleError: this.handleError,
                         meta: this.state.meta,
                         primaryMenu: this.state.primaryMenu,
                         socialSites: this.state.socialSites,
-                    }}>
-                        <BrowserRouter>
-                            <ScrollToTop />                    
-                            <Switch>                
-                                <Route path="/rubriky/:categorySlug" component={Category} />
-                                <Route path="/clanky/:postSlug" component={Post} />
-                                <Route path="/stitky/:tagSlug" component={Tag} />
-                                <Route exact path="/kontakt" component={Contact} />
-                                <Route path="/:pageSlug" component={Page} />
-                                <Route exact path="/" component={FrontPage} />
-                            </Switch>
-                        </BrowserRouter>            
+                    }}>                        
+                        
+                            <Header />
+                            <Background />
+                            <ScrollToTop /> 
+                            <div id='container' className='md:absolute md:z-20 md:mt-32 flex-col space-y-0 min-w-full min-h-full'>
+                                <main id='content' className='flex-grow min-h-screen'>
+                                    {this.state.error 
+                                    ? 
+                                        <PageError title={this.state.error.title ? this.state.error.title : 'Chyba aplikace'} description={this.state.error.description} />
+                                    :
+                                        <Switch>                
+                                            <Route path='/rubriky/:categorySlug' component={Category} />
+                                            <Route path='/clanky/:postSlug' component={Post} />
+                                            <Route path='/stitky/:tagSlug' component={Tag} />
+                                            <Route exact path='/kontakt' component={Contact} />
+                                            <Route path='/:pageSlug' component={Page} />
+                                            <Route exact path='/' component={FrontPage} />
+                                        </Switch>                                   
+                                    }
+                                </main>
+                                <Footer />
+                            </div>                                                                              
                     </BlogContext.Provider>                                    
                 }                
             </div>
@@ -109,4 +166,4 @@ class App extends React.Component{
     }
 }
 
-export default App;
+export default withRouter(App);
