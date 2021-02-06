@@ -14,8 +14,9 @@ function front_page_setup(){
 
 function front_page_get_welcome_ids(){
     $welcome = get_option( 'frontpage-welcome', null);
+    $post = get_post($welcome);    
     return array(
-        'welcome' => $welcome ? intval($welcome) : null,
+        'welcome' => ($post && $post->post_type == 'page') ? $post->post_name : null,
     );
 }
 
@@ -36,7 +37,7 @@ function front_page_customizer(WP_Customize_Manager $wpc){
     ));
 
     $wpc->add_setting('frontpage-welcome', array(
-        'type' => 'option'
+        'type' => 'option',
     ));
 
     $wpc->add_control('frontpage-welcome-control', array(
@@ -44,7 +45,7 @@ function front_page_customizer(WP_Customize_Manager $wpc){
         'description' => 'Prosím, vyberte stránku ze seznamu.',
         'type' => 'dropdown-pages',
         'section' => 'frontpage-section',
-        'settings' => 'frontpage-welcome',
+        'settings' => 'frontpage-welcome',        
     ));    
 }
 

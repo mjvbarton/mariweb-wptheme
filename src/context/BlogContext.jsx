@@ -9,6 +9,11 @@ import React from 'react';
 export const BlogInfo = {   
     apiBaseUrl: 'https://wordpress.localhost/wp-json',
     error: null,
+    footer: {
+        patreon: null,
+        copyright: null,
+    },
+    frontpage: null,
     handleError: (error) => {},
     meta: {
         name: null,

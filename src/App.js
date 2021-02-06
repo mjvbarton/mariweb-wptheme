@@ -28,6 +28,8 @@ class App extends React.Component{
             primaryMenu: BlogInfo.primaryMenu,
             socialSites: BlogInfo.socialSites,
             error: null,
+            frontpage: BlogInfo.frontpage,
+            footer: BlogInfo.footer,
         };
 
         this.handleError = this.handleError.bind(this);        
@@ -83,10 +85,13 @@ class App extends React.Component{
         /*
          * Loading Social sites
          */
-        axios.get(`${BlogInfo.apiBaseUrl}/mariweb-wptheme/v1/socialsites`)
+        axios.get(`${BlogInfo.apiBaseUrl}/mariweb-wptheme/v1/all`)
         .then((response) => {
+            console.log(response);
             this.setState({
-                socialSites: response.data,
+                socialSites: response.data.socialSites,
+                frontpage: response.data.frontpage,
+                footer: response.data.footer,
             });
         })
         .catch((error) => {
@@ -125,16 +130,18 @@ class App extends React.Component{
     render(){        
         return (
             <div className='App'>
-                {(!this.state.meta || !this.state.socialSites || !this.state.primaryMenu) ?
+                {(!this.state.meta || !this.state.socialSites || !this.state.primaryMenu || !this.state.frontpage) ?
                     <PageLoader error={this.state.error} />
                     :
                     <BlogContext.Provider value={{
-                        apiBaseUrl: BlogInfo.apiBaseUrl,
+                        apiBaseUrl: BlogInfo.apiBaseUrl,                        
                         error: this.state.error,
+                        footer: this.state.footer,                    
                         handleError: this.handleError,
                         meta: this.state.meta,
                         primaryMenu: this.state.primaryMenu,
                         socialSites: this.state.socialSites,
+                        frontpage: this.state.frontpage,
                     }}>                        
                         
                             <Header />
