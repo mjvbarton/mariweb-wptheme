@@ -7,7 +7,7 @@ import React from 'react';
  * @since 1.0.0
  */
 export const BlogInfo = {   
-    apiBaseUrl: 'https://wordpress.localhost/wp-json',
+    apiBaseUrl: process.env.REACT_APP_API_BASE_URL,
     error: null,
     footer: {
         patreon: null,
