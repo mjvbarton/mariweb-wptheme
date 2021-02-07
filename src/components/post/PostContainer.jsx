@@ -83,7 +83,7 @@ class PostContainer extends React.Component{
             <aside id={this.props.id} className={this.props.className}>
                 <h2 className='font-sans font-normal text-3xl text-red-800 text-center'>{this.props.title}</h2>                
                 {this.state.posts && this.state.posts.map((post) => 
-                    <PostSummary key={post.id} title={post.title} author={post.author_nicename} excerpt={post.excerpt} created={post.date} imgUri={post.media.thumbnail} slug={post.slug}/>                    
+                    <PostSummary key={post.id} title={post.title} author={post.author_nicename} excerpt={post.excerpt} created={post.date} imgUri={post.media.large} slug={post.slug}/>                    
                 )}         
                 {this.state.posts && this.props.paginate && !this.state.noMorePages && !this.state.isLoading &&
                     <button className='block my-5 mx-auto p-3 bg-red-800 text-white max-w-max text-2xl font-sans font-medium hover:bg-red-600' onClick={this.nextPage}>Načíst další články</button>       
