@@ -11,6 +11,7 @@ function aggregate_theme_api_setup(){
 
 function aggregate_theme_api(){
     return array(
+        'backgrounds' => backgrounds(),
         'socialSites' => social_sites(),
         'frontpage' => front_page_get_welcome_ids(), 
         'footer' => customize_footer_get_footer(),

@@ -30,6 +30,8 @@ class FrontPage extends React.Component{
             }
             this.setState({
                 page: response.data
+            }, () => {
+                context.setPageBackground(null);
             })
         })
         .catch((error) => {

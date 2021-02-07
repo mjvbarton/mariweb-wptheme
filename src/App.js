@@ -27,12 +27,14 @@ class App extends React.Component{
             meta: BlogInfo.meta,
             primaryMenu: BlogInfo.primaryMenu,
             socialSites: BlogInfo.socialSites,
+            backgrounds: BlogInfo.backgrounds,
             error: null,
             frontpage: BlogInfo.frontpage,
             footer: BlogInfo.footer,
         };
 
-        this.handleError = this.handleError.bind(this);        
+        this.handleError = this.handleError.bind(this);  
+        this.setPageBackground = this.setPageBackground.bind(this);      
     }
 
     /**
@@ -92,6 +94,10 @@ class App extends React.Component{
                 socialSites: response.data.socialSites,
                 frontpage: response.data.frontpage,
                 footer: response.data.footer,
+                backgrounds: {
+                    default: response.data.backgrounds.default,
+                    page: this.state.backgrounds.page,                    
+                }
             });
         })
         .catch((error) => {
@@ -112,9 +118,9 @@ class App extends React.Component{
     componentDidUpdate(prevProps, prevState){
         if(prevProps.location !== this.props.location){
             this.setState({
-                error: null,
+                error: null,                
             });
-        }
+        }        
     }
     
     /**
@@ -125,6 +131,15 @@ class App extends React.Component{
         this.setState({
             error: error,
         });
+    }   
+    
+    setPageBackground(backgroundURL){
+        this.setState({
+            backgrounds: {
+                default: this.state.backgrounds.default,
+                page: backgroundURL,
+            }
+        });
     }
 
     render(){        
@@ -134,7 +149,9 @@ class App extends React.Component{
                     <PageLoader error={this.state.error} />
                     :
                     <BlogContext.Provider value={{
-                        apiBaseUrl: BlogInfo.apiBaseUrl,                        
+                        apiBaseUrl: BlogInfo.apiBaseUrl, 
+                        backgrounds: this.state.backgrounds,                       
+                        setPageBackground: this.setPageBackground,
                         error: this.state.error,
                         footer: this.state.footer,                    
                         handleError: this.handleError,
@@ -145,7 +162,7 @@ class App extends React.Component{
                     }}>                        
                         
                             <Header />
-                            <Background />
+                            <Background alt="Pozadí stránky" src={this.state.backgrounds.default}/>
                             <ScrollToTop /> 
                             <div id='container' className='md:absolute md:z-20 md:mt-32 flex-col space-y-0 min-w-full min-h-full'>
                                 <main id='content' className='flex-grow min-h-screen'>

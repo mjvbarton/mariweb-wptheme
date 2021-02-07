@@ -47,7 +47,7 @@ class Category extends React.Component{
      */
     loadCategory(){
         let context = this.context;
-        axios.get(`https://wordpress.localhost/wp-json/wp/v2/categories`, {
+        axios.get(`${context.apiBaseUrl}/wp/v2/categories`, {
             params: {
                 slug: encodeURIComponent(this.props.match.params.categorySlug),                
             }
@@ -57,6 +57,10 @@ class Category extends React.Component{
                 const category = response.data[0];
                 this.setState({
                     category: category,
+                }, () => {
+                    if(this.state.category.taxonomy_background){
+                        context.setPageBackground(this.state.category.taxonomy_background);
+                    }
                 });
             } else {
                 context.handleError({

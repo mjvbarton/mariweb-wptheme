@@ -53,6 +53,10 @@ class Page extends React.Component{
                 }
                 this.setState({
                     post: response.data,                                
+                },() => {
+                    if(this.state.post.media){
+                        context.setPageBackground(this.state.post.media.large);
+                    }
                 });
             })
             .catch((error) => {            

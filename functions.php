@@ -43,20 +43,20 @@ if ( ! function_exists( 'mariweb_setup' ) ) {
 		/**
 		 * Add post-formats support.
 		 */
-		add_theme_support(
-			'post-formats',
-			array(
-				'link',
-				'aside',
-				'gallery',
-				'image',
-				'quote',
-				'status',
-				'video',
-				'audio',
-				'chat',
-			)
-		);
+		// add_theme_support(
+		// 	'post-formats',
+		// 	array(
+		// 		'link',
+		// 		'aside',
+		// 		'gallery',
+		// 		'image',
+		// 		'quote',
+		// 		'status',
+		// 		'video',
+		// 		'audio',
+		// 		'chat',
+		// 	)
+		// );
 
 		/*
 		 * Enable support for Post Thumbnails on posts and pages.
@@ -136,18 +136,13 @@ if ( ! function_exists( 'mariweb_setup' ) ) {
 		// Add support for responsive embedded content.
 		add_theme_support( 'responsive-embeds' );
 
-		// Add support for custom line height controls.
-		// add_theme_support( 'custom-line-height' );		
+		// Disabling custom colors in editor				
+		add_theme_support( 'disable-custom-colors' );
+		add_theme_support( 'editor-color-palette', array());
 
-		// Add support for experimental link color control.
-		// add_theme_support( 'experimental-link-color' );
-
-		// Add support for experimental cover block spacing.
-		// add_theme_support( 'custom-spacing' );
-
-		// Add support for custom units.
-		// This was removed in WordPress 5.6 but is still required to properly support WP 5.5.
-		// add_theme_support( 'custom-units' );
+		// Disabling custom font sizes		
+		add_theme_support( 'disable-custom-font-sizes' );
+		add_theme_support('editor-font-sizes', array());
 
 		// Edits excerpt
 		add_filter( 'excerpt_more', function(){

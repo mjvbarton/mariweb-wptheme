@@ -17,7 +17,7 @@ class PageLoader extends React.Component{
                     </div>                 
                 } 
                 {this.props.error &&
-                    <PageError title='Chyba aplikace' description={this.props.error} />
+                    <PageError title='Chyba aplikace' description={this.props.error.description} />
                 }             
             </div>
         );

@@ -16,7 +16,8 @@ class Post extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            post: null,                 
+            post: null,   
+            category: null,              
         }
     }
 
@@ -45,7 +46,7 @@ class Post extends React.Component{
         let context = this.context;
         this.setState({
             post: null,            
-        }, () => {
+        }, () => {            
             axios.get(`${context.apiBaseUrl}/better-rest-endpoints/v1/posts/${this.props.match.params.postSlug}`)
             .then((response) => {
                 if(Array.isArray(response.data)){
@@ -56,6 +57,10 @@ class Post extends React.Component{
                 } else {
                     this.setState({
                         post: response.data,
+                    }, () => {
+                        if(!context.backgrounds.page){
+                            this.loadBackground();
+                        }
                     });
                 }
             })
@@ -66,6 +71,24 @@ class Post extends React.Component{
                 });
             });
         });        
+    }
+
+    loadBackground(){
+        let context = this.context;
+        axios.get(`${context.apiBaseUrl}/wp/v2/categories`, {
+            params: {
+                slug: this.state.post.categories[0].slug
+            }
+        })
+        .then((categoryResponse) => {
+            this.setState({
+                category: categoryResponse.data[0],
+            }, () => {
+                if(this.state.category.taxonomy_background){
+                    context.setPageBackground(this.state.category.taxonomy_background);
+                }
+            });
+        });
     }
 
     render(){

@@ -13,6 +13,11 @@ export const BlogInfo = {
         patreon: null,
         copyright: null,
     },
+    backgrounds: {
+        default: null,
+        page: null,
+        category: null,        
+    },
     frontpage: null,
     handleError: (error) => {},
     meta: {
@@ -23,7 +28,8 @@ export const BlogInfo = {
         gmt_offset: null,
         timezone_string: null,
     },
-    primaryMenu: [],   
+    primaryMenu: [],  
+    setPageBackground: (backgroundURL) => {}, 
     socialSites:{
         facebook: {
             name: null,
