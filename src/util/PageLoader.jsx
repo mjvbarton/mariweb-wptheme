@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PageError from '../templates/PageError';
 
 /**
  * Loading UI when the application loads on start.
@@ -17,7 +16,14 @@ class PageLoader extends React.Component{
                     </div>                 
                 } 
                 {this.props.error &&
-                    <PageError title='Chyba aplikace' description={this.props.error.description} />
+                    <>
+                        <div className='text-white text-6xl text-center mt-40'>
+                            Chyba aplikace
+                        </div>            
+                        <div className='text-white text-2xl text-center mt-5 font-mono'>
+                            {this.props.error.description}
+                        </div>
+                    </>     
                 }             
             </div>
         );
