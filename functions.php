@@ -155,6 +155,7 @@ if ( ! function_exists( 'mariweb_setup' ) ) {
 		require_once(get_template_directory() . '/inc/backgrounds.php');
 		require_once(get_template_directory() . '/inc/customize-footer.php');
 		require_once(get_template_directory() . '/inc/aggregate-api.php');
+		require_once(get_template_directory() . '/inc/disable-comments.php');
 	}
 }
 add_action( 'after_setup_theme', 'mariweb_setup' );
