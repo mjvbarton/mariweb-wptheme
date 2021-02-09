@@ -24,8 +24,8 @@ class FrontPage extends React.Component{
         .then((response) => {
             if(Array.isArray(response)){
                 context.handleError({
-                    title: "Stránka nenalezena",
-                    description: "Stránka, kterou jste hledali neexistuje."
+                    title: 'Stránka nenalezena',
+                    description: 'Stránka, kterou jste hledali neexistuje.'
                 });
             }
             this.setState({
@@ -37,7 +37,7 @@ class FrontPage extends React.Component{
         .catch((error) => {
             console.error(error);
             context.handleError({
-                description: "V aplikaci se vyskytla neočekávaná chyba. Zobrazte konzoli pro více informací."
+                description: 'V aplikaci se vyskytla neočekávaná chyba. Zobrazte konzoli pro více informací.'
             });
         })
         

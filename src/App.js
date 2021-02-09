@@ -164,7 +164,7 @@ class App extends React.Component{
                             <Header />
                             <Background alt="Pozadí stránky" src={this.state.backgrounds.default}/>
                             <ScrollToTop /> 
-                            <div id='container' className='md:absolute md:z-20 md:mt-32 flex-col space-y-0 min-w-full min-h-full'>
+                            <div id='pageContent' className='md:absolute md:z-20 md:mt-32 flex-col space-y-0 min-w-full min-h-full'>
                                 <main id='content' className='flex-grow min-h-screen'>
                                     {this.state.error 
                                     ? 

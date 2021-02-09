@@ -5,9 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
+const hasAdminBar = document.querySelectorAll("#wpadminbar").length > 0;
+
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter forceRefresh={hasAdminBar}>
       <App />
     </BrowserRouter>
   </React.StrictMode>,

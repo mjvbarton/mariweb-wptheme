@@ -8,7 +8,7 @@ import React from 'react';
 class Nav extends React.Component{
     render(){
         return(
-            <nav className={this.props.className}>
+            <nav id="#primaryMenu" className={this.props.className}>
                 <h2 className={this.props.titleClass}>{this.props.title}</h2>
                 <ul className={this.props.ulClass}>
                     {this.props.children && this.props.children.map((child) => (child) ?

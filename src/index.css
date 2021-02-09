@@ -9,3 +9,9 @@
 
 @import './css/colors.css';
 @import './css/typography.css';
+
+
+/* Admin bar styles */
+.admin-bar #pageHeader, .admin-bar #pageBackground, .admin-bar #pageContent{
+	top: 30px;
+}

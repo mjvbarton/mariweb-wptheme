@@ -33,7 +33,7 @@ class Header extends React.Component{
         return(
             <BlogContext.Consumer>
                 {blogInfo =>
-                    <header className='fixed top-0 z-50 w-full'>                        
+                    <header id="pageHeader" className='fixed top-0 z-50 w-full'>                        
                         <div className='flex flex-row md:items-center items-start justify-items-stretch w-full md:max-w-7xl mx-auto shadow-lg bg-white md:py-5 py-4 z-30'>
                             <div className='md:flex-none text-4xl mx-5 font-medium text-red-800'>
                                 <Link to='/'>

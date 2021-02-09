@@ -10,12 +10,12 @@ class Background extends React.Component{
     render(){
         let context = this.context;
         return(
-            <div className='mt-10 md:mt-0 md:fixed z-10'>
+            <div id='pageBackground' className='mt-10 md:mt-0 md:fixed z-10'>
                 {context.backgrounds.page &&
-                    <img src={encodeURI(context.backgrounds.page)} alt="Pozadí vlastní stránky" className='object-cover w-screen z-0'/>
+                    <img src={encodeURI(context.backgrounds.page)} alt='Pozadí vlastní stránky' className='object-cover w-screen z-0'/>
                 }                
                 {context.backgrounds.default && !context.backgrounds.page &&
-                    <img src={encodeURI(context.backgrounds.default)} alt="Výchozí pozadí" className='object-cover w-screen z-0'/>
+                    <img src={encodeURI(context.backgrounds.default)} alt='Výchozí pozadí' className='object-cover w-screen z-0'/>
                 }
             </div>
         );
