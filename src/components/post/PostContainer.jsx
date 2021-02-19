@@ -80,7 +80,7 @@ class PostContainer extends React.Component{
 
     render(){
         return(
-            <aside id={this.props.id} className={this.props.className}>
+            <aside id={this.props.id} className='bg-white min-h-full py-10 md:px-10'>
                 <h2 className='font-sans font-normal text-3xl text-red-800 text-center'>{this.props.title}</h2>                
                 {this.state.posts && this.state.posts.map((post) => 
                     <PostSummary key={post.id} title={post.title} author={post.author_nicename} excerpt={post.excerpt} created={post.date} imgUri={post.media.large} slug={post.slug}/>                    

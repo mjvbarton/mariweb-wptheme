@@ -127,7 +127,7 @@ class Post extends React.Component{
                     Related posts
                 */}
                 {this.state.post &&                                        
-                    <PostContainer id='relatedPosts' title='Související články' className='bg-white h-full py-10 md:px-10' exclude={this.state.post.id} categoryName={this.state.post.categories[0].slug} perPage={3}/> 
+                    <PostContainer id='relatedPosts' title='Související články' exclude={this.state.post.id} categoryName={this.state.post.categories[0].slug} perPage={3}/> 
                 }                         
             </>
         );
