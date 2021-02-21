@@ -3,8 +3,9 @@ import Nav from '../components/navs/Nav';
 import {Link} from 'react-router-dom';
 import SocialSites from '../components/navs/SocialSites';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faCaretUp, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { BlogContext } from '../context/BlogContext';
+import SearchBar from '../util/SearchBar';
 
 /**
  * The header of the blog with brand, navigation and social icons.
@@ -17,14 +18,24 @@ class Header extends React.Component{
         super(props);
         this.state = {
             showMainMenu: false,
+            showSearchBar: false,
         };
 
         this.toggleMainMenu = this.toggleMainMenu.bind(this);
+        this.toggleSearchBar = this.toggleSearchBar.bind(this);
     }
 
     toggleMainMenu(){
         this.setState({
+            showSearchBar: false,
             showMainMenu: !this.state.showMainMenu,
+        });
+    }
+
+    toggleSearchBar(){
+        this.setState({
+            showSearchBar: !this.state.showSearchBar,
+            showMainMenu: false,
         });
     }
 
@@ -52,7 +63,9 @@ class Header extends React.Component{
                                         {item.title}                                        
                                     </Link>
                                 )}                                                                
-                            </Nav>                    
+                            </Nav>
+                            <div className="flex-grow" />
+                            <SearchBar className={"fixed md:relative bg-gray-300 md:bg-transparent min-w-full md:min-w-0 p-5 md:p-0 text-xl md:mx-5 top-16  md:top-0 md:visible " + ((this.state.showSearchBar) ? 'visible' : 'invisible')} forward to="/vyhledat"/>                   
                             <SocialSites
                                 facebook='example' 
                                 instagram='example'
@@ -67,7 +80,11 @@ class Header extends React.Component{
                                 ulClass='hidden md:flex md:flex-row justify-items-end' 
                                 liClass='mx-2 uppercase text-gray-700 text-sm hover:text-red-800'
                             />
-                            <button id='mainMenuToggle' className='md:hidden mx-7 text-gray-800 border-gray-800 bg-200 border-solid border rounded-sm shadow py-1 px-3 text-2xl'>
+                            <button id='searchToggle' className='md:hidden mx-2 text-gray-800 border-gray-800 bg-200 border-solid border rounded-sm shadow py-1 px-3 text-2xl'>
+                                <FontAwesomeIcon icon={faSearch} onClick={this.toggleSearchBar}/>
+                                <span className='sr-only'>Zobrazit/skrýt hlavní menu</span>
+                            </button>
+                            <button id='mainMenuToggle' className='md:hidden ml-2 mr-7 text-gray-800 border-gray-800 bg-200 border-solid border rounded-sm shadow py-1 px-3 text-2xl'>
                                 <FontAwesomeIcon icon={this.state.showMainMenu ? faCaretUp : faCaretDown} onClick={this.toggleMainMenu}/>
                                 <span className='sr-only'>Zobrazit/skrýt hlavní menu</span>
                             </button>

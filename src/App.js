@@ -14,6 +14,7 @@ import Header from './templates/Header';
 import Background from './util/Background';
 import Footer from './templates/Footer';
 import PageError from './templates/PageError';
+import Archive from './templates/Archive';
 
 /**
  * Mari's blog client application.
@@ -174,6 +175,7 @@ class App extends React.Component{
                                             <Route path='/rubriky/:categorySlug' component={Category} />
                                             <Route path='/clanky/:postSlug' component={Post} />
                                             <Route path='/stitky/:tagSlug' component={Tag} />
+                                            <Route path='/vyhledat' component={Archive} />
                                             <Route exact path='/kontakt' component={Contact} />
                                             <Route path='/:pageSlug' component={Page} />
                                             <Route exact path='/' component={FrontPage} />
