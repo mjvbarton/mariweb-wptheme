@@ -12,25 +12,12 @@ import { BlogContext } from '../../context/BlogContext';
 class PostContainer extends React.Component{
     constructor(props) {
         super(props);
-
         this.state = {
             isLoading: false,
             posts: null,
             page: this.props.page,
             noMorePages: false,
         }
-
-        /**
-         * Handles response from the API
-         * @param {*} response 
-         */
-        this.handlePostResponse = (response) => {
-            this.setState({                
-                isLoading: false,                
-                noMorePages: Array.isArray(response.data) && response.data.length === 0,
-                posts: Array.isArray(this.state.posts) ? this.state.posts.concat(response.data) : response.data,             
-            });
-        };
         
         this.loadPosts = this.loadPosts.bind(this);
         this.nextPage = this.nextPage.bind(this);
@@ -40,7 +27,7 @@ class PostContainer extends React.Component{
      * Loads posts on mount.
      */
     componentDidMount(){
-        this.props.search ? this.searchPosts() : this.loadPosts();
+        this.loadPosts();
     }
     
     /**
@@ -50,7 +37,7 @@ class PostContainer extends React.Component{
      */
     componentDidUpdate(prevProps, prevState){
         if(this.state.page !== prevState.page){
-            this.componentDidMount();
+            this.loadPosts();
         }
     }
 
@@ -58,7 +45,7 @@ class PostContainer extends React.Component{
      * Loads posts     
      */
     loadPosts(){
-        let context = this.context;        
+        let context = this.context;
         axios.get(`${context.apiBaseUrl}/better-rest-endpoints/v1/posts`, {
             params: {
                 category_name: this.props.categorySlug,
@@ -70,19 +57,13 @@ class PostContainer extends React.Component{
                 per_page: this.props.perPage,
                 tag: this.props.tagId,
             }
-        }).then(this.handlePostResponse);        
-    }
-    
-    searchPosts(){
-        let context = this.context;
-        axios.get(`${context.apiBaseUrl}/better-rest-endpoints/v1/search`, {
-            params: {
-                content: this.props.content,
-                page: this.state.page,
-                per_page: this.props.perPage,
-                search: this.props.search,
-            }
-        }).then(this.handlePostResponse);
+        }).then((response) => {
+            this.setState({
+                isLoading: false,                
+                noMorePages: Array.isArray(response.data) && response.data.length === 0,
+                posts: Array.isArray(this.state.posts) ? this.state.posts.concat(response.data) : response.data, 
+            });
+        });
     }
 
     /**
@@ -99,7 +80,7 @@ class PostContainer extends React.Component{
 
     render(){
         return(
-            <aside id={this.props.id} className='bg-white flex-grow py-10 md:px-10'>
+            <aside id={this.props.id} className={this.props.className}>
                 <h2 className='font-sans font-normal text-3xl text-red-800 text-center'>{this.props.title}</h2>                
                 {this.state.posts && this.state.posts.map((post) => 
                     <PostSummary key={post.id} title={post.title} author={post.author_nicename} excerpt={post.excerpt} created={post.date} imgUri={post.media.large} slug={post.slug}/>                    
@@ -109,9 +90,6 @@ class PostContainer extends React.Component{
                 }
                 {this.state.posts && this.props.paginate && this.state.noMorePages &&
                     <div className='block my-5 mx-auto p-3 max-w-max text-xl font-sans font-medium text-gray-600'>Již jste načetli všechny dostupné články.</div>
-                }
-                {this.state.posts && !this.props.paginate && this.state.noMorePages &&
-                    <div className='block my-5 mx-auto p-3 max-w-max text-xl font-sans font-medium text-gray-600'>Nebyly nalezeny žádné články</div>
                 }
                 {((this.state.posts) == null || this.state.isLoading) &&
                     <div>
@@ -181,11 +159,6 @@ PostContainer.propTypes = {
      * @default 10
      */
     perPage: PropTypes.number.isRequired, 
-
-    /**
-     * Activates search function
-     */
-    search: PropTypes.string,
 
     /**
      * Filters posts based on the tag id if filled.

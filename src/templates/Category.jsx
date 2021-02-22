@@ -90,7 +90,7 @@ class Category extends React.Component{
                     
                 }
                 {this.state.category &&
-                    <PostContainer id='posts' categorySlug={this.state.category.slug} paginate title='Nejnovější články v rubrice' />
+                    <PostContainer id='posts' categorySlug={this.state.category.slug} paginate title='Nejnovější články v rubrice' className='bg-white h-full py-10 md:px-10'/>
                 }                                                
             </>
         );

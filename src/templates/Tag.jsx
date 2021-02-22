@@ -18,7 +18,7 @@ class Tag extends React.Component{
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus risus enim, bibendum eu neque quis, aliquam tincidunt mi. Vivamus quis hendrerit sapien. Quisque semper mauris ut massa commodo rhoncus. Curabitur nec velit eget augue rhoncus ullamcorper vel id ex. Integer suscipit nisl ac quam vestibulum feugiat. Integer bibendum mauris suscipit aliquet ornare. In vestibulum odio ut tortor malesuada, et porttitor velit imperdiet.
                     </p>
                 </section>                                            
-                <PostContainer id='posts' title='Články se štítkem' />                
+                <PostContainer id='posts' title='Články se štítkem' className='bg-white h-full py-10 md:px-10'/>                
             </>
         );
     }
