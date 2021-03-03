@@ -37,7 +37,7 @@ class PostSummary extends React.Component{
                 </div>    
                 <article className='md:mx-5 font-mono font-light w-full md:w-2/3 my-3 md:my-0 px-5 md:px-0'>                    
                     <h3 className='text-red-800 font-sans font-medium text-4xl mb-2'>
-                        <Link to={`/clanky/${this.props.slug}`} className='hover:text-red-600 hover:underline'>{this.props.title}</Link>
+                        <Link to={`/clanky/${this.props.slug}`} className='hover:text-red-600 hover:underline focus:text-red-600 focus:underline focus:outline-none'>{this.props.title}</Link>
                     </h3>                            
                         <PostMeta author={this.props.author} created={this.props.created} className='mb-5'/>       
                         <p className='typography light-colors'>

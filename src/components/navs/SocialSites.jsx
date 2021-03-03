@@ -21,6 +21,7 @@ class SocialSites extends React.Component{
                                 icon={faFacebook} 
                                 siteName='Facebook' 
                                 url={encodeURI(`${blogInfo.socialSites.facebook.prefix}${blogInfo.socialSites.facebook.profile}`)}
+                                className={this.props.linkClass}
                             />
                         }
                         {blogInfo.socialSites.instagram.profile &&
@@ -28,6 +29,7 @@ class SocialSites extends React.Component{
                                 icon={faInstagram} 
                                 siteName='Instagram' 
                                 url={encodeURI(`${blogInfo.socialSites.instagram.prefix}${blogInfo.socialSites.instagram.profile}`)}
+                                className={this.props.linkClass}
                             />
                         }
                         {blogInfo.socialSites.pinterest.profile &&
@@ -35,6 +37,7 @@ class SocialSites extends React.Component{
                                 icon={faPinterest} 
                                 siteName='Pinterest' 
                                 url={encodeURI(`${blogInfo.socialSites.pinterest.prefix}${blogInfo.socialSites.pinterest.profile}`)}
+                                className={this.props.linkClass}
                             />
                         }
                         {blogInfo.socialSites.youtube.profile &&
@@ -42,6 +45,7 @@ class SocialSites extends React.Component{
                                 icon={faYoutube} 
                                 siteName='YouTube' 
                                 url={encodeURI(`${blogInfo.socialSites.youtube.prefix}${blogInfo.socialSites.youtube.profile}`)}
+                                className={this.props.linkClass}
                             />
                         }
                         {blogInfo.socialSites.soundcloud.profile &&
@@ -56,6 +60,7 @@ class SocialSites extends React.Component{
                                 icon={faTwitter} 
                                 siteName='Twitter' 
                                 url={encodeURI(`${blogInfo.socialSites.twitter.prefix}${blogInfo.socialSites.twitter.profile}`)}
+                                className={this.props.linkClass}
                             />
                         }
                         {blogInfo.socialSites.github.profile &&
@@ -63,6 +68,7 @@ class SocialSites extends React.Component{
                                 icon={faGithub} 
                                 siteName='GitHub' 
                                 url={encodeURI(`${blogInfo.socialSites.github.prefix}${blogInfo.socialSites.github.profile}`)}
+                                className={this.props.linkClass}
                             />
                         }
                         {blogInfo.socialSites.email.profile &&
@@ -70,6 +76,7 @@ class SocialSites extends React.Component{
                                 icon={faAt} 
                                 siteName='Napsat email' 
                                 url={encodeURI(`${blogInfo.socialSites.email.prefix}${blogInfo.socialSites.email.profile}`)}
+                                className={this.props.linkClass}
                             />
                         }
                     </Nav>

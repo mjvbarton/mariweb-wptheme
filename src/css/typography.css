@@ -43,7 +43,7 @@
 }
 
 .typography a{
-    @apply font-bold hover:underline;
+    @apply font-bold hover:underline focus:underline focus:outline-none;
 }
 
 .typography ul{

@@ -31,13 +31,14 @@ class Footer extends React.Component{
                         titleClass='sr-only'
                         ulClass='flex items-center justify-center'
                         liClass='mx-3 text-lg hover:text-white'
+                        linkClass='hover:text-white focus:text-white focus:outline-none'
                     />
                     <div id='copyright' className='mt-7 text-xs'>
                         <p>
                             &copy; {context.footer.meta.copyright}
                         </p>
                         <p>
-                            S &hearts; vytvořil <a href='https://github.com/mjvbarton' target='__blank' className='hover:text-white hover:underline'>mjvbarton</a>.                    
+                            S &hearts; vytvořil <a href='https://github.com/mjvbarton' target='__blank' className='hover:text-white hover:underline focus:text-white focus:underline focus:outline-none'>mjvbarton</a>.                    
                         </p>
                     </div>
                 </div>                

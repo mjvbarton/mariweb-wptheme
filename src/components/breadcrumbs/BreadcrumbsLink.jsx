@@ -6,6 +6,6 @@ export default class BreadcrumbsLink extends React.Component{
         return this.props.active ?
             <span className="active">{this.props.children}</span>
             :
-            <Link to={this.props.to} className="hover:underline">{this.props.children}</Link>;        
+            <Link to={this.props.to} className="hover:underline focus:underline focus:outline-none">{this.props.children}</Link>;        
     }
 };
