@@ -3,6 +3,9 @@ import qs from 'qs';
 import axios from 'axios';
 import PostSummary from '../components/post/PostSummary';
 import { BlogContext } from '../context/BlogContext';
+import Content from '../util/Content';
+import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
+import BreadcrumbsLink from '../components/breadcrumbs/BreadcrumbsLink';
 
 class Archive extends React.Component{
     constructor(props){
@@ -54,10 +57,16 @@ class Archive extends React.Component{
 
     render(){
         return(
-            <>
-                <section id="search" className="bg-white md:mx-32 px-5 md:px-10 py-5 md:mb-32">
-                    <h1 className="text-5xl text-red-800 mb-5">Archiv příspěvků</h1>                    
-                    <h2 className="text-3xl text-red-800 text-center">Výsledky hledání pro "{this.state.query}"</h2>
+            <Content breadcrumbs={
+                <Breadcrumbs>
+                    <BreadcrumbsLink to='/'>Domů</BreadcrumbsLink>
+                    /
+                    <BreadcrumbsLink active>Archiv příspěvků</BreadcrumbsLink>
+                </Breadcrumbs>
+            }>
+                <section id="search" className="bg-white">
+                    <h1 className="text-5xl text-red-800 font-sans mb-5">Archiv příspěvků</h1>                    
+                    <h2 className="text-3xl text-red-800 font-sans text-center">Výsledky hledání pro "{this.state.query}"</h2>
                     {this.state.isLoading && 
                         <>
                             <PostSummary empty />
@@ -72,7 +81,7 @@ class Archive extends React.Component{
                         <div className="block my-5 mx-auto p-3 max-w-max text-xl font-sans font-medium text-gray-600">Nebyly nalezeny žádné články</div>                    
                     }
                 </section>                                
-            </>
+            </Content>
         );
     }
 }

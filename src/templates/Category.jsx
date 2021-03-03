@@ -3,6 +3,9 @@ import PostContainer from '../components/post/PostContainer';
 import ReactHtmlParser from 'react-html-parser';
 import axios from 'axios';
 import { BlogContext } from '../context/BlogContext';
+import Content from '../util/Content';
+import BreadcrumbsLink from '../components/breadcrumbs/BreadcrumbsLink';
+import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 
 /**
  * Represents article category from Wordpress taxonomy.
@@ -60,6 +63,8 @@ class Category extends React.Component{
                 }, () => {
                     if(this.state.category.taxonomy_background){
                         context.setPageBackground(this.state.category.taxonomy_background);
+                    } else {
+                        context.setPageBackground(context.backgrounds.default);
                     }
                 });
             } else {
@@ -90,7 +95,15 @@ class Category extends React.Component{
                     
                 }
                 {this.state.category &&
-                    <PostContainer id='posts' categorySlug={this.state.category.slug} paginate title='Nejnovější články v rubrice' className='bg-white h-full py-10 md:px-10'/>
+                    <Content breadcrumbs={
+                        <Breadcrumbs>
+                            <BreadcrumbsLink to='/'>Domů</BreadcrumbsLink>
+                            /
+                            <BreadcrumbsLink active>{this.state.category.name}</BreadcrumbsLink>
+                        </Breadcrumbs>
+                    }>
+                        <PostContainer id='posts' categorySlug={this.state.category.slug} paginate title='Nejnovější články v rubrice' className='bg-white h-full py-10 md:px-10'/>
+                    </Content>
                 }                                                
             </>
         );

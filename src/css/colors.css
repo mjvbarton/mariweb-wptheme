@@ -21,6 +21,14 @@
     @apply text-gray-600;
 }
 
+.light-colors .btn{
+    @apply bg-red-800 hover:bg-red-600 text-white hover:text-white;
+}
+
+.light-colors #breadcrumbs .active{
+    @apply text-gray-700;
+}
+
 /**
 * Dark color scheme
 * FIXME: Implement working dark mode

@@ -6,6 +6,9 @@ import PostMeta from '../components/post/PostMeta';
 import TagLink from '../components/post/TagLink';
 import Tags from '../components/post/Tags';
 import { BlogContext } from '../context/BlogContext';
+import Content from '../util/Content';
+import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
+import BreadcrumbsLink from '../components/breadcrumbs/BreadcrumbsLink';
 
 /**
  * Represents the post of the Wordpress blog
@@ -94,41 +97,45 @@ class Post extends React.Component{
     render(){
         return(
             <>                                               
-                {this.state.post &&                  
-                    <section id='postContent' className='typography light-colors md:mx-32 px-5 md:px-10 py-5 md:mb-32'>
-                        {/* 
-                            Post header with title and meta information (author name, date created) and post image if present
-                        */}
-                        <header id='postHeader'>
-                            <h1>{this.state.post.title}</h1>
-                            <PostMeta className='mb-2' author={this.state.post.author_nicename} created={this.state.post.date}/>     
-                            <figure>
-                                <img src={this.state.post.media.large} alt='Úvodní obrázek článku'/>
-                            </figure>
-                        </header>
+                {this.state.post &&     
+                    <Content breadcrumbs={
+                        <Breadcrumbs>
+                            <BreadcrumbsLink to='/'>Domů</BreadcrumbsLink>
+                            /                            
+                            <BreadcrumbsLink to={this.state.post.categories[0].link.split(this.context.meta.url)[1]}>{this.state.post.categories[0].name}</BreadcrumbsLink>
+                            /
+                            <BreadcrumbsLink active>{this.state.post.title}</BreadcrumbsLink>
+                        </Breadcrumbs>
+                    }>
+                        <section id='postContent' className='typography'>
+                            {/* 
+                                Post header with title and meta information (author name, date created) and post image if present
+                            */}
+                            <header id='postHeader'>
+                                <h1>{this.state.post.title}</h1>
+                                <PostMeta className='mb-2' author={this.state.post.author_nicename} created={this.state.post.date}/>     
+                                <figure>
+                                    <img src={this.state.post.media.large} alt='Úvodní obrázek článku'/>
+                                </figure>
+                            </header>
 
-                        {/* 
-                            The content of the post
-                        */}
-                        {this.state.post.blocks && this.state.post.blocks.map((block) => (block.blockName !== null) && ReactHtmlParser(block.innerContent))}
+                            {/* 
+                                The content of the post
+                            */}
+                            {this.state.post.blocks && this.state.post.blocks.map((block) => (block.blockName !== null) && ReactHtmlParser(block.innerContent))}
 
-                        {/* 
-                            The tags associated with this post
-                        */}
-                        <Tags className='mt-10 text-xs md:text-base'>
-                            {this.state.post.tags.map((tag) =>
-                                <TagLink title={tag.name} slug={tag.slug} key={tag.id} />
-                            )}
-                        </Tags>
-                    </section>  
-                }               
-
-                {/* 
-                    Related posts
-                */}
-                {this.state.post &&                                        
-                    <PostContainer id='relatedPosts' title='Související články' className='bg-white h-full py-10 md:px-10' exclude={this.state.post.id} categoryName={this.state.post.categories[0].slug} perPage={3}/> 
-                }                         
+                            {/* 
+                                The tags associated with this post
+                            */}
+                            <Tags className='mt-10 text-xs md:text-base'>
+                                {this.state.post.tags.map((tag) =>
+                                    <TagLink title={tag.name} slug={tag.slug} key={tag.id} />
+                                )}
+                            </Tags>
+                        </section>  
+                        <PostContainer id='relatedPosts' title='Související články' className='bg-white h-full py-10 md:px-10' exclude={this.state.post.id} categoryName={this.state.post.categories[0].slug} perPage={3}/> 
+                    </Content>
+                }                                    
             </>
         );
     }

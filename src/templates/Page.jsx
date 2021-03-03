@@ -1,7 +1,10 @@
 import axios from 'axios';
 import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
+import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
+import BreadcrumbsLink from '../components/breadcrumbs/BreadcrumbsLink';
 import { BlogContext } from '../context/BlogContext';
+import Content from '../util/Content';
 
 /**
  * Represents Wordpress page
@@ -73,12 +76,20 @@ class Page extends React.Component{
         return(
             <>                                
                 {this.state.post &&   
-                    <section id='pageContent' className='md:mx-32 min-h-max px-5 md:px-10 py-5 md:mb-32 typography dark-colors'>                    
-                        <h1 className='text-center'>{this.state.post.title}</h1>                            
-                        {this.state.post.blocks && this.state.post.blocks.map((block) => 
-                            (block.blockName !== null) ? ReactHtmlParser(block.innerContent) : null                                
-                        )}
-                    </section>
+                    <Content breadcrumbs={
+                        <Breadcrumbs>
+                            <BreadcrumbsLink to='/'>Domů</BreadcrumbsLink>
+                            /
+                            <BreadcrumbsLink active>{this.state.post.title}</BreadcrumbsLink>
+                        </Breadcrumbs>
+                    }>
+                        <section id='pageContent' className='min-h-max px-5 md:px-10 py-5 typography'>                    
+                            <h1 className='text-center'>{this.state.post.title}</h1>                            
+                            {this.state.post.blocks && this.state.post.blocks.map((block) => 
+                                (block.blockName !== null) ? ReactHtmlParser(block.innerContent) : null                                
+                            )}
+                        </section>
+                    </Content>
                 }                                    
             </>
         );

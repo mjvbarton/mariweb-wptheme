@@ -15,3 +15,8 @@
 .admin-bar #pageHeader, .admin-bar #pageBackground, .admin-bar #pageContent{
 	top: 30px;
 }
+
+/* Button style */
+.btn{
+	@apply block my-5 p-3 max-w-max text-xl font-sans font-medium;
+}

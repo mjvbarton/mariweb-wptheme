@@ -44,7 +44,7 @@ class PostSummary extends React.Component{
                             {ReactHtmlParser(this.props.excerpt)}                         
                             <span className='text-gray-400 mx-1'>[...]</span>
                         </p>                                           
-                        <Link to={`/clanky/${this.props.slug}`} className='block my-5 p-3 bg-red-800 text-white max-w-max text-xl font-sans font-medium hover:bg-red-600'>Pokračovat ve čtení</Link>                                                                                               
+                        <Link to={`/clanky/${this.props.slug}`} className='btn'>Pokračovat ve čtení</Link>                                                                                               
                     </article>
                 </div>
         );

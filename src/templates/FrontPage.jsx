@@ -3,6 +3,7 @@ import React from 'react';
 import PostContainer from '../components/post/PostContainer';
 import { BlogContext } from '../context/BlogContext';
 import ReactHtmlParser from 'react-html-parser';
+import  Content  from '../util/Content';
 
 /**
  * Represents the front page of the blog
@@ -53,9 +54,11 @@ class FrontPage extends React.Component{
                             (block.blockName !== null) ? ReactHtmlParser(block.innerContent) : null                                
                         )}                                      
                 </section>    
-                }
-                {this.state.page &&                
-                    <PostContainer id='mainPosts' title='Nejnovější články' className='bg-white h-full py-10 md:px-10' paginate />
+                }                
+                {this.state.page &&  
+                    <Content >                                      
+                        <PostContainer id='mainPosts' title='Nejnovější články' className='bg-white h-full py-10 md:px-10' paginate />
+                    </Content>
                 }
             </>
         );
