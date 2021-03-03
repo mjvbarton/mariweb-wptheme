@@ -6,7 +6,6 @@ import {Switch, Route, withRouter} from 'react-router-dom';
 import FrontPage from './templates/FrontPage';
 import Tag from './templates/Tag';
 import ScrollToTop from './util/ScrolToTop';
-import Contact from './templates/Contact';
 import PageLoader from './util/PageLoader';
 import { BlogContext, BlogInfo } from './context/BlogContext';
 import axios from 'axios';
@@ -175,8 +174,7 @@ class App extends React.Component{
                                             <Route path='/rubriky/:categorySlug' component={Category} />
                                             <Route path='/clanky/:postSlug' component={Post} />
                                             <Route path='/stitky/:tagSlug' component={Tag} />
-                                            <Route path='/vyhledat' component={Archive} />
-                                            <Route exact path='/kontakt' component={Contact} />
+                                            <Route path='/vyhledat' component={Archive} />                                            
                                             <Route path='/:pageSlug' component={Page} />
                                             <Route exact path='/' component={FrontPage} />
                                         </Switch>                                   
