@@ -4,6 +4,7 @@ import PostContainer from '../components/post/PostContainer';
 import { BlogContext } from '../context/BlogContext';
 import ReactHtmlParser from 'react-html-parser';
 import  Content  from '../util/Content';
+import Head from '../components/head/Head';
 
 /**
  * Represents the front page of the blog
@@ -46,7 +47,8 @@ class FrontPage extends React.Component{
     
     render(){
         return(
-            <>  
+            <>                  
+                <Head />                
                 {this.state.page &&                              
                 <section id='frontPage' className='md:mx-auto md:max-w-2xl px-10 py-5 md:mb-32 typography dark-colors font-mono text-sm md:text-base font-extralight'>                    
                     <h1 className='text-center font-sans font-light uppercase text-4xl md:text-5xl my-5'>{this.state.page.title}</h1>

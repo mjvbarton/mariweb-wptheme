@@ -6,6 +6,7 @@ import { BlogContext } from '../context/BlogContext';
 import Content from '../util/Content';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import BreadcrumbsLink from '../components/breadcrumbs/BreadcrumbsLink';
+import Head from '../components/head/Head';
 
 class Archive extends React.Component{
     constructor(props){
@@ -64,6 +65,7 @@ class Archive extends React.Component{
                     <BreadcrumbsLink active>Archiv příspěvků</BreadcrumbsLink>
                 </Breadcrumbs>
             }>
+                <Head pageTitle={`Vyhledat "${this.state.query}"`} />
                 <section id="search" className="bg-white">
                     <h1 className="text-5xl text-red-800 font-sans mb-5">Archiv příspěvků</h1>                    
                     <h2 className="text-3xl text-red-800 font-sans text-center">Výsledky hledání pro "{this.state.query}"</h2>

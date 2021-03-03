@@ -3,6 +3,7 @@ import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import BreadcrumbsLink from '../components/breadcrumbs/BreadcrumbsLink';
+import Head from '../components/head/Head';
 import { BlogContext } from '../context/BlogContext';
 import Content from '../util/Content';
 
@@ -83,6 +84,7 @@ class Page extends React.Component{
                             <BreadcrumbsLink active>{this.state.post.title}</BreadcrumbsLink>
                         </Breadcrumbs>
                     }>
+                        <Head pageTitle={this.state.post.title} />
                         <section id='pageContent' className='min-h-max px-5 md:px-10 py-5 typography'>                    
                             <h1 className='text-center'>{this.state.post.title}</h1>                            
                             {this.state.post.blocks && this.state.post.blocks.map((block) => 

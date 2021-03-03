@@ -9,6 +9,7 @@ import { BlogContext } from '../context/BlogContext';
 import Content from '../util/Content';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import BreadcrumbsLink from '../components/breadcrumbs/BreadcrumbsLink';
+import Head from '../components/head/Head';
 
 /**
  * Represents the post of the Wordpress blog
@@ -106,7 +107,8 @@ class Post extends React.Component{
                             /
                             <BreadcrumbsLink active>{this.state.post.title}</BreadcrumbsLink>
                         </Breadcrumbs>
-                    }>
+                    }>                        
+                        <Head pageTitle={this.state.post.title} />                        
                         <section id='postContent' className='typography'>
                             {/* 
                                 Post header with title and meta information (author name, date created) and post image if present

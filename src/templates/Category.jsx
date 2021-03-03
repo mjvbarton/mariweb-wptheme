@@ -6,6 +6,7 @@ import { BlogContext } from '../context/BlogContext';
 import Content from '../util/Content';
 import BreadcrumbsLink from '../components/breadcrumbs/BreadcrumbsLink';
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
+import Head from '../components/head/Head';
 
 /**
  * Represents article category from Wordpress taxonomy.
@@ -101,7 +102,8 @@ class Category extends React.Component{
                             /
                             <BreadcrumbsLink active>{this.state.category.name}</BreadcrumbsLink>
                         </Breadcrumbs>
-                    }>
+                    }>                        
+                        <Head pageTitle={this.state.category.name} />                        
                         <PostContainer id='posts' categorySlug={this.state.category.slug} paginate title='Nejnovější články v rubrice' className='bg-white h-full py-10 md:px-10'/>
                     </Content>
                 }                                                
